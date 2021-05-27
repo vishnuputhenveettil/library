@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>library</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+
+<body>
+  <section class="" >
+    <nav class="navbar navbar-expand-lg navbar-light nav">
+      <a class="navbar-brand" href="#">BookManiac</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#noti">Notification <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dash board
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#books">Rent Book</a>
+              <a class="dropdown-item" href="#">Manage Profile</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href='http://127.0.0.1:8000/'>Logout</a>
+            </div>
+          </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Book" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="jumbotron jum ">
+        <h1 class="display-4 uh"></h1>
+        <p class="lead">There are lots of books waiting for you.Rent multiple Books any where at any Time </p>
+        <hr class="my-4">
+        <p>Constantly check for a book if it's out of stock</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#books" role="button">View Books</a>
+        </p>
+      </div>
+      <div class="" style="height:400px;" id="noti">
+        <h1 style="text-align:left;font-size:4rem;font-weight:bold;padding-top:20px;">Notifications</h1>
+        <div class="table-header">
+          <table class="table" >
+          <thead class="user-head" >
+
+          </thead>
+          </table>
+        </div>
+        <div class="table-content" >
+          <table class="table" id="utable" >
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <hr style="width:50%; ">
+  <section  >
+    <h1 style="text-align:center">Books</h1>
+    <h3 style="padding-left:25px; font-weight:bold;">Category</h2>
+    <select class="in" id="boocat" style="width:25%; background-color:#fff;">
+      <option>All</option>
+    </select>
+    <div id="books">
+
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="container-fluid">
+      <h3 class="fh">Connect With Us.....</h3>
+      <i class=" social-icon fab fa-twitter"></i>
+      <i class=" social-icon fab fa-facebook-f"></i>
+      <i class=" social-icon fab fa-instagram"></i>
+      <i class=" social-icon fas fa-envelope"></i>
+      <p class="fh">© Copyright 2021 BookManiac</p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/4e83676d83.js" crossorigin="anonymous"></script>
+  <script src="{% static 'JavaScript/uscript.js' %}" charset="utf-8"></script>
+</body>
+
+</html>

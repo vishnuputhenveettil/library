@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>library</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+
+<body>
+  <section class="">
+    <nav class="navbar navbar-expand-lg navbar-light nav">
+      <a class="navbar-brand" href="#">BookManiac</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Manage Borrowings <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dash board
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item ac" href="#">Add Category</a>
+              <a class="dropdown-item mc" href="#">Manage Category</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item ab" href="#">Add Book</a>
+              <a class="dropdown-item mb" href="#">Manage Books</a>
+            </div>
+          </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <button class="btn btn-primary alout" type="button">Logout</button>
+        </form>
+      </div>
+    </nav>
+  </section>
+  <section>
+    <div id="abmodal-wrapper" class="modal" style="margin-top:30px">
+      <form class="modal-content animate" style="height:600px" action="{% url 'file_upload' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="container form-group">
+          <span class="close us">&times;</span>
+          <h1 style="text-align:center">Add Book</h1>
+          <input type="Number" placeholder="Book ID" class="in" name="bid" id="bid">
+          <input type="text" placeholder="Name" class="in" name="bname" id="bname">
+          <select class="in" name="bcat" id="bcat" >
+            <option value="">select category</option>
+          </select>
+          <input type="text" class="in" placeholder="Author" name="bauth" id="bauth">
+          <input type="number" placeholder="No Of Copies" class="in" name="bnum" id="bnum">
+          <label class="">Upload Cover Pic</label>
+          <input type="file" class="ff in" name="file1">
+          <button type="submit" class="lbtn btn-primary addbtn" disabled>ADD</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="mbmodal-wrapper" class="modal" style="margin-top:30px;width:400px;">
+      <form class="modal-content animate" style="height:500px">
+        <div class="container">
+          <span class="close us">&times;</span>
+          <h1 style="text-align:center">Manage Book</h1>
+          <select class="in" id="mbid">
+            <option>select book id</option>
+          </select>
+
+          <input type="text" placeholder="Name" class="in" id="mbname">
+          <select class="in" id="mbcat">
+          <option value="">category</option>
+          </select>
+
+          <input type="text" class="in" placeholder="Author" id="mbauth">
+          <input type="number" placeholder="No Of Copies" class="in" id="mbnum">
+          <div >
+            <button type="button" class="lbtn cbook" style="display:inline-block;">Save</button>or
+            <button type="button" class="lbtn dbook" style="display:inline-block;">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div id="acmodal-wrapper" class="modal" style="margin-top:30px">
+      <form class="modal-content animate" style="height:380px">
+        <div class="container">
+          <span class="close us">&times;</span>
+          <h1 style="text-align:center">Add Category</h1>
+          <input type="Number" placeholder="ID" class="in" id="cid">
+          <input type="text" placeholder="Name" class="in" id="cname">
+          <input type="text" placeholder="Description" class="in" id="cdesc">
+          <button type="button" class="lbtn addcat">ADD</button>
+        </div>
+      </form>
+    </div>
+    <div id="mcmodal-wrapper" class="modal" style="margin-top:30px; width:400px;">
+      <form class="modal-content animate" style="height:380px">
+        <div class="container">
+          <span class="close us">&times;</span>
+          <h1 style="text-align:center">Manage Category</h1>
+          <select class="in" id="mcid">
+            <option>select id</option>
+          </select>
+          <input type="text" placeholder="Name" class="in" id="mcname">
+          <input type="text" placeholder="Description" class="in" id="mcdesc">
+            <div >
+              <button type="button" class="lbtn ccat" style="display:inline-block;">Save</button>or
+              <button type="button" class="lbtn dcat" style="display:inline-block;">Delete</button>
+            </div>
+
+        </div>
+      </form>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <div class="jumbotron jumbotron-fluid jums " style="width:100%;">
+  <div class="container">
+    <h1 class="display-4">Admin Page</h1>
+    <hr>
+    <p class="lead">It's up to you,Apporove or Reject the request done by the user</p>
+  <hr>
+    <p class="lead">
+      For more operations go to Dashboard on the navigation bar
+    </p>
+  </div>
+</div>
+      <div class=" admin_notification">
+        <h1 style="text-align:center;">Notifications</h1>
+        <div class="">
+          <table class="table">
+            <thead class="adtab">
+
+            </thead>
+          </table>
+        </div>
+        <div class="table-content">
+
+          <table class="table" id="atable">
+
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section>
+
+  </section>
+
+
+  <footer class="foot">
+    <div class="container-fluid">
+      <h3 class="fh">Connect With Us.....</h3>
+      <i class=" social-icon fab fa-twitter"></i>
+      <i class=" social-icon fab fa-facebook-f"></i>
+      <i class=" social-icon fab fa-instagram"></i>
+      <i class=" social-icon fas fa-envelope"></i>
+      <p class="fh">© Copyright 2021 BookManiac</p>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/4e83676d83.js" crossorigin="anonymous"></script>
+  <script src="{% static 'JavaScript/ascript.js' %}" charset="utf-8"></script>
+</body>
+
+</html>
